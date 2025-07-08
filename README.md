@@ -1,4 +1,4 @@
-# 💰 Personal Finance Dashboard
+# 💰 Painel de finanças pessoais
 
 Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de receitas e despesas de forma simples e visual.
 
