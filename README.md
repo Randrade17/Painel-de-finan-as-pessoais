@@ -22,121 +22,120 @@ Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  Personal Finnce Dashboard
-  <link rel="stylesheet" href="css/style.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Personal Finnce Dashboard</title>
+<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <header>
-    <h1>Personal Finance Dashboard</h1>
-    <button id="toggle-theme">Toggle Theme</button>
-  </header>
+ <header>
+   <h1>Personal Finance Dashboard</h1>
+   <button id="toggle-theme">Toggle Theme</button>
+ </header>
 
-  <main>
-    <section id="balance">
-      <h2>Current Balance: <span id="balance-amount">$0.00</span></h2>
-    </section>
+ <main>
+   <section id="balance">
+     <h2>Current Balance: <span id="balance-amount">$0.00</span></h2>
+   </section>
+   <section id="form-section">
+     <h2>Add Transaction</h2>
+     <form id="transaction-form">
+       <input type="text" id="description" placeholder="Description" required />
+       <input type="number" id="amount" placeholder="Amount" required />
+       <select id="type">
+         <option value="income">Income</option>
+         <option value="expense">Expense</option>
+       </select>
+       <button type="submit">Add</button>
+     </form>
+   </section>
 
-    <section id="form-section">
-      <h2>Add Transaction</h2>
-      <form id="transaction-form">
-        <input type="text" id="description" placeholder="Description" required />
-        <input type="number" id="amount" placeholder="Amount" required />
-        <select id="type">
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
-        <button type="submit">Add</button>
-      </form>
-    </section>
+   <section id="transactions">
+     <h2>Transactions</h2>
+     <ul id="transaction-list"></ul>
+   </section>
 
-    <section id="transactions">
-      <h2>Transactions</h2>
-      <ul id="transaction-list"></ul>
-    </section>
+   <section id="charts">
+     <h2>Overview</h2>
+     <canvas id="chart"></canvas>
+   </section>
+ </main>
 
-    <section id="charts">
-      <h2>Overview</h2>
-      <canvas id="chart"></canvas>
-    </section>
-  </main>
-
-  <script type="module" src="js/app.js"></script>
+ <script type="module" src="js/app.js"></script>
 </body>
 </html>
 
 :root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --accent-color: #4caf50;
-  --expense-color: #f44336;
+ --bg-color: #ffffff;
+ --text-color: #333333;
+ --accent-color: #4caf50;
+ --expense-color: #f44336;
 }
 
 body.dark {
-  --bg-color: #121212;
-  --text-color: #f0f0f0;
+ --bg-color: #121212;
+ --text-color: #f0f0f0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg-color);
-  color: var(--text-color);
+ margin: 0;
+ font-family: Arial, sans-serif;
+ background: var(--bg-color);
+ color: var(--text-color);
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: var(--accent-color);
-  color: white;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1rem;
+ background: var(--accent-color);
+ color: white;
 }
 
 main {
-  padding: 1rem;
-  max-width: 800px;
-  margin: auto;
+ padding: 1rem;
+ max-width: 800px;
+ margin: auto;
 }
 
 section {
-  margin-bottom: 2rem;
+ margin-bottom: 2rem;
 }
 
 form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.5rem;
 }
 
 form input,
 form select,
 form button {
-  padding: 0.5rem;
-  font-size: 1rem;
+ padding: 0.5rem;
+ font-size: 1rem;
 }
 
 #transaction-list {
-  list-style: none;
-  padding: 0;
+ list-style: none;
+ padding: 0;
 }
 
 #transaction-list li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 0.5rem;
+ padding: 0.5rem;
+ border: 1px solid #ddd;
+ border-radius: 4px;
 }
 
 #transaction-list li.income {
-  border-left: 4px solid var(--accent-color);
+ border-left: 4px solid var(--accent-color);
 }
 
 #transaction-list li.expense {
-  border-left: 4px solid var(--expense-color);
+ border-left: 4px solid var(--expense-color);
 }
 
 
@@ -148,41 +147,41 @@ js/
 📂 js/storage.js
 
 export default class Storage {
-  static getTransactions() {
-    return JSON.parse(localStorage.getItem("transactions")) || [];
+ static getTransactions() {
+   return JSON.parse(localStorage.getItem("transactions")) || [];
   }
 
-  static saveTransactions(transactions) {
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+ static saveTransactions(transactions) {
+   localStorage.setItem("transactions", JSON.stringify(transactions));
   }
 }
 
 📂 js/transactions.js
 
 export default class Transactions {
-  constructor() {
-    this.transactions = [];
+ constructor() {
+   this.transactions = [];
+ }
+
+ load(transactions) {
+   this.transactions = transactions;
+ }
+
+ add(transaction) {
+   this.transactions.push(transaction);
   }
 
-  load(transactions) {
-    this.transactions = transactions;
+ remove(index) {
+   this.transactions.splice(index, 1);
   }
 
-  add(transaction) {
-    this.transactions.push(transaction);
-  }
-
-  remove(index) {
-    this.transactions.splice(index, 1);
-  }
-
-  getBalance() {
-    return this.transactions.reduce((total, t) => {
-      return t.type === "income"
-        ? total + t.amount
-        : total - t.amount;
-    }, 0);
-  }
+ getBalance() {
+   return this.transactions.reduce((total, t) => {
+     return t.type === "income"
+       ? total + t.amount
+       : total - t.amount;
+   }, 0);
+ }
 }
 
 📂 js/app.js
