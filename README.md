@@ -16,8 +16,9 @@ Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de
 - JavaScript ES6+
 - Chart.js
 
- index.html
- 
+**Código abaixo**
+
+ index.html 
 <!DOCTYPE html>
 <html lang="en">
 <head>
