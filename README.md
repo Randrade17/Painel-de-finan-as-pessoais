@@ -24,7 +24,7 @@ Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Personal Finance Dashboard</title>
+  <title>Personal Finnce Dashboard
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
