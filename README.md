@@ -17,8 +17,8 @@ Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de
 - Chart.js
 
 
-1️⃣ index.html
-
+ index.html
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,9 +65,6 @@ Um painel financeiro pessoal feito com JavaScript puro, permitindo o controle de
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
-
-
-2️⃣ css/style.css
 
 :root {
   --bg-color: #ffffff;
@@ -143,13 +140,10 @@ form button {
 }
 
 
-3️⃣ JavaScript Modular Inicial
-
 js/
 ├── app.js
 ├── storage.js
 ├── transactions.js
-
 
 📂 js/storage.js
 
@@ -162,7 +156,6 @@ export default class Storage {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }
 }
-
 
 📂 js/transactions.js
 
@@ -191,7 +184,6 @@ export default class Transactions {
     }, 0);
   }
 }
-
 
 📂 js/app.js
 
